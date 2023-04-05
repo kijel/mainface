@@ -2,7 +2,7 @@ name: creation of a new build
 on: 
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   build-github:
