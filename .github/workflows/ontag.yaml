@@ -21,20 +21,13 @@ jobs:
           echo REPONAME=$REPONAME >> $GITHUB_ENV
           echo ACTOR=$ACTOR >> $GITHUB_ENV
           
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ env.ACTOR }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Build and Push
         uses: docker/build-push-action@v1
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: ghcr.io
-          repository: ${{ env.ACTOR }}/${{ env.REPONAME }}
+          repository: ${{ github.event.organization.login }}/${{ env.REPONAME }}
           tags: ${{ env.VERSION }}
       
   build-dockerhub:
