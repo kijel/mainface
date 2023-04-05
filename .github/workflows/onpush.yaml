@@ -22,6 +22,6 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         github_repo: ${{ github.repository }}
-        version: ${{ env.PACKAGE_VERSION }}
+        version: ${{ env.VERSION }}
         git_commit_sha: ${{ github.sha }}
         git_tag_prefix: "v"
